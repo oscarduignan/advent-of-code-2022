@@ -15,8 +15,8 @@ println("Part1:")
 
 def oneIsASubset(pairs: ((Int, Int),(Int, Int))): Boolean =
   val (elf1, elf2) = pairs
-  (elf1._1 >= elf2._1 && elf1._2 <= elf2._2) ||
-  (elf1._1 <= elf2._1 && elf1._2 >= elf2._2)
+  (elf1._1 >= elf2._1 && elf1._2 <= elf2._2) || // elf 1 contained by elf 2
+  (elf1._1 <= elf2._1 && elf1._2 >= elf2._2)    // elf 2 contained by elf 1
 
 pprintln(example.filter(oneIsASubset).length)
 
@@ -28,9 +28,8 @@ println("Part2:")
 
 def theyOverlap(pairs: ((Int,Int), (Int,Int))): Boolean =
   val (elf1, elf2) = pairs
-  (elf1._1 >= elf2._1 && elf1._1 <= elf2._2) ||
-  (elf1._2 >= elf2._1 && elf1._2 <= elf2._2) ||
-  oneIsASubset(elf1, elf2)
+  (elf1._1 >= elf2._1 && elf1._1 <= elf2._2) || // elf 1 starts in elf 2
+  (elf2._1 >= elf1._1 && elf2._1 <= elf1._2)    // elf 2 starts in elf 1
 
 pprintln(example.filter(theyOverlap).length)
 
