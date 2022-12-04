@@ -11,6 +11,8 @@ def loadInput(file: String): List[((Int, Int), (Int, Int))] =
 
 val example = loadInput("example")
 
+pprintln(example)
+
 println("Part1:")
 
 def oneIsASubset(pairs: ((Int, Int), (Int, Int))): Boolean =
@@ -19,9 +21,10 @@ def oneIsASubset(pairs: ((Int, Int), (Int, Int))): Boolean =
     elf2_start -> elf2_end
   ) = pairs
 
-  (elf1_start >= elf2_start && elf1_start <= elf2_end) || // elf 1 contained by elf 2
-  (elf1_start <= elf2_start && elf1_start >= elf2_end)    // elf 2 contained by elf 1
+  (elf1_start >= elf2_start && elf1_end <= elf2_end) || // elf 1 contained by elf 2
+  (elf1_start <= elf2_start && elf1_end >= elf2_end)    // elf 2 contained by elf 1
 
+pprintln(example.filter(oneIsASubset))
 pprintln(example.filter(oneIsASubset).length)
 
 val myInput = loadInput("myInput")
